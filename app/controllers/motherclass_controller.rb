@@ -7,17 +7,24 @@ class MotherclassController < ApplicationController
 
   def index
     tiss_http_fetcher = TissHttpFetcher.new
-    @siteName = "Application"
+    @site_name = "Application"
     case self.class.name
     when 'PersonController'
-      @siteName = "Person"
+      @site_name = "Person"
 
+      @search_data_response = []
+      if params[:search].present?
+        @search_data_response = tiss_http_fetcher.search_people params[:search]
+      end
+      if params[:id].present?
+        @person_detail = tiss_http_fetcher.get_person params[:id]
+      end
     when 'CoursesController'
-      @siteName = "Courses"
+      @site_name = "Courses"
     when 'ThesesController'
-      @siteName = "Thesis"
+      @site_name = "Thesis"
     when 'ProjectsController'
-      @siteName = "Projects"
+      @site_name = "Projects"
     else
       "This is a generic message for unknown controllers"
     end

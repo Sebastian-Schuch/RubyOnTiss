@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   #
   root 'motherclass#index'
-  get "/person", to: "person#index"
-  get '/person/search', to: 'person#search', as: 'person_search'
+  get "/person", to: "person#search"
   get '/person/:id/detail', to: 'person#get_details', as: 'person_detail'
   get '/person/:id/favorite', to: 'person#addfavorite', as: 'person_favorite'
   get "/courses", to: "courses#index"

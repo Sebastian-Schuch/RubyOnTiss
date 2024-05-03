@@ -1,29 +1,42 @@
 require_relative '../services/tiss_http_fetcher.rb'
+require 'nokogiri'
 
 class PersonController < MotherclassController
+  before_action :index
 
-
+  def setup
+    @tiss_http_fetcher = TissHttpFetcher.new
+  end
 
   def test
     render html: @search
   end
 
   def search
-    @searchDataResponse = []
-    if params[:search].present?
-      tiss_http_fetcher = TissHttpFetcher.new
-      param = params[:search]
-      @searchDataResponse = tiss_http_fetcher.search_people param
-    end
     render :index
   end
 
-  def getDetails(id)
-    @id = id
+  def get_details
+
+    parse_xml @person_detail
+
+    render :detail
   end
 
-  def parseXML(xml)
-    @xml = xml
+  def parse_xml(xml)
+    @firstname = xml.xpath("//firstname").text
+    @lastname = xml.xpath("//lastname").text
+    @pre_title = xml.xpath("//preceding_titles").text
+    @picture = xml.xpath("//picture_uri").text
+    @gender = xml.xpath("//gender").text
+    if @gender == "M"
+      @gender = "Herr"
+    else if @gender == "F"
+        @gender = "Frau"
+      else
+        @gender = ""
+     end
+    end
   end
 
   def addFavorite(id)

@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require 'nokogiri'
 
 class TissHttpFetcher
   BASE_URL = "https://tiss.tuwien.ac.at/api/"
@@ -20,12 +21,14 @@ class TissHttpFetcher
     unless response.is_a?(Net::HTTPSuccess)
       raise "Request failed with code #{response.code}"
     end
+    puts "Response body: #{response.body}"
 
     case response.content_type
     when 'application/json'
       JSON.parse(response.body)
-    when 'text/html', 'application /xml'
-      REXML::Document.new(response.body)
+    when 'text/html', 'application/xml'
+      doc = Nokogiri::XML(response.body)
+      doc.remove_namespaces!
     else
       raise "Unsupported content type #{response.content_type}"
     end
