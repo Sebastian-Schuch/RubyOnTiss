@@ -1,29 +1,11 @@
-<<<<<<< HEAD
 # RubyOnTiss
-Proxy of the Tiss page
-=======
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Proxy of the Tiss page.
 
-Things you may want to cover:
+Time tracking:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
->>>>>>> origin/master
+| Matr. Nr. | Name             | Task                                          | Time  |
+|-----------|------------------|-----------------------------------------------|-------|
+| 12222156  | Sebastian Schuch | Setting up WSL, Ruby, Rails and basic Project | 1:30h |
+|           |                  |                                               |       |
+|           |                  |                                               |       |
