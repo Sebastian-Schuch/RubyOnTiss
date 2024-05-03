@@ -51,10 +51,10 @@
     <script>
         function myFunction() {
             var x = document.getElementById("myLinks");
-            if (x.style.display === "block") {
-                x.style.display = "none";
+            if (x.classList.contains("expanded")) {
+                x.classList.remove("expanded");
             } else {
-                x.style.display = "block";
+                x.classList.add("expanded");
             }
         }
     </script>
