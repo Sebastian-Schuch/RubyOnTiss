@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  #
+  root 'motherclass#index'
+  get "/person", to: "person#index"
+  get "/courses", to: "courses#index"
+  get "/projects", to: "projects#index"
+  get "/theses", to: "theses#index"
 end

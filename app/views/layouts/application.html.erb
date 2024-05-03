@@ -7,9 +7,33 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navLinks = document.querySelectorAll("nav ul li a");
+            var currentPath = window.location.pathname;
+
+            navLinks.forEach(function(link) {
+                if (link.getAttribute("href") === currentPath) {
+                    link.parentElement.classList.add("active");
+                }
+            });
+        });
+    </script>
   </head>
 
   <body>
+  <nav>
+    <ul>
+      <li><%= image_tag 'rubyOnTiss-logo-png.png', class:'nav-img-logo', alt: 'Description of the image' %>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Person', person_path %></li>
+      <li><%= link_to 'Courses', courses_path %></li>
+      <li><%= link_to 'Projects', projects_path %></li>
+      <li><%= link_to 'Theses', theses_path %></li>
+    </ul>
+  </nav>
+  <section id="main">
     <%= yield %>
+  </section>
   </body>
 </html>
