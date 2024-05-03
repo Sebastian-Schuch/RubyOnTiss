@@ -12,9 +12,6 @@ class MotherclassController < ApplicationController
     when 'PersonController'
       @siteName = "Person"
 
-
-
-
     when 'CoursesController'
       @siteName = "Courses"
     when 'ThesesController'
