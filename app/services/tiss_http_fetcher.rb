@@ -21,7 +21,6 @@ class TissHttpFetcher
     unless response.is_a?(Net::HTTPSuccess)
       raise "Request failed with code #{response.code}"
     end
-    puts "Response body: #{response.body}"
 
     case response.content_type
     when 'application/json'

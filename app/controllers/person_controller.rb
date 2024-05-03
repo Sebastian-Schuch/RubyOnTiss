@@ -31,7 +31,7 @@ class PersonController < MotherclassController
     @gender = xml.xpath("//gender").text
     if @gender == "M"
       @gender = "Herr"
-    else if @gender == "F"
+    else if @gender == "W"
         @gender = "Frau"
       else
         @gender = ""
