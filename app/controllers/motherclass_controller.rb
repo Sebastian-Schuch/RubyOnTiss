@@ -1,12 +1,17 @@
+
+require_relative '../services/tiss_http_fetcher.rb'
 class MotherclassController < ApplicationController
+
 
   #This is the mother class that will be inherited by all other classes
 
   def index
+    tiss_http_fetcher = TissHttpFetcher.new
     @siteName = "Application"
     case self.class.name
     when 'PersonController'
       @siteName = "Person"
+      @data = tiss_http_fetcher.search_people "Alex"
     when 'CoursesController'
       @siteName = "Courses"
     when 'ThesesController'

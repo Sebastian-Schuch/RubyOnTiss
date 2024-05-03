@@ -2,20 +2,20 @@ require 'net/http'
 require 'json'
 
 class TissHttpFetcher
-  BASE_URL = 'https://tiss.tuwien.ac.at/api/'
+  BASE_URL = "https://tiss.tuwien.ac.at/api/"
   def search_people(param)
-    uri = URI("person/v21/psuche?q=" + param)
+    uri = "person/v21/psuche?q=" + param
     fetch_request(uri)
   end
 
   def get_person(id)
-    uri = URI("person/v21/id/#{id}")
+    uri = "person/v21/id/#{id}"
     fetch_request(uri)
   end
 
   def fetch_request(endpoint)
-    uri = URI(BASE_URL + endpoint)
-    response = Net::HTTP.get(uri)
+    uri = URI("#{BASE_URL}#{endpoint}")
+    response = Net::HTTP.get_response(uri)
 
     unless response.is_a?(Net::HTTPSuccess)
       raise "Request failed with code #{response.code}"

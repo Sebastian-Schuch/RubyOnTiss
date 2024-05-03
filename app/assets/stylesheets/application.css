@@ -14,6 +14,17 @@
  *= require_self
  */
 
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, Helvetica, sans-serif;
+}
+
+#main{
+    margin: 30px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -50,11 +61,67 @@ li a:hover:not(.active) {
     margin: 0 20px 0 20px;
 }
 
-body{
-    margin: 0;
-    padding: 0;
+#logo-mobile{
+    display: none;
 }
 
-#main{
-    margin: 30px;
+#mobile-menu-icon{
+    display: none;
 }
+
+.topnav #myLinks {
+    display: block;
+}
+
+@media screen and (max-width: 600px) {
+
+    #mobile-menu-icon{
+        display: block;
+    }
+
+    #logo-desktop{
+        display: none;
+    }
+
+    li {
+        display: block;
+        width: 100%;
+    }
+
+    #logo-mobile{
+        display: block;
+    }
+
+    .topnav #myLinks {
+        display: none;
+    }
+
+    ul{
+        background-color: #aaa;
+    }
+
+    .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+    }
+
+    .topnav a.icon {
+        #background: black;
+        color: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 99;
+
+    }
+
+    li:hover {
+        background-color: #ddd;
+        color: black;
+    }
+}
+
