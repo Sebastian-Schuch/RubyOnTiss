@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #
   root 'motherclass#index'
   get "/person", to: "person#index"
+  get '/person/search', to: 'person#search', as: 'person_search'
   get "/courses", to: "courses#index"
   get "/projects", to: "projects#index"
   get "/theses", to: "theses#index"

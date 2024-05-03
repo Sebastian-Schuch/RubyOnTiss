@@ -1,3 +1,5 @@
+require_relative '../services/tiss_http_fetcher.rb'
+
 class PersonController < MotherclassController
 
 
@@ -5,8 +7,11 @@ class PersonController < MotherclassController
     render html: @search
   end
 
-  def search(param)
-    #@search = param
+  def search
+
+    redirect_to action: :index, search: params[:search]
+
+
   end
 
   def getDetails(id)

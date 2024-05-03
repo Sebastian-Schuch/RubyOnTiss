@@ -1,1 +1,18 @@
 <h1><%= @siteName %></h1>
+
+
+<%=  form_tag('/person/search', method: 'get')  do %>
+  <%= label_tag :search %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
+<div id="searchResults">
+  <ul>
+    <% @searchDataResponse %>
+    <% @searchDataResponse.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,9 @@
+<ul>
+  <% @searchDataResponse.each do |article| %>
+    <li>
+      <a href="<%= article_path(article) %>">
+        <%= article.firstname %>
+      </a>
+    </li>
+  <% end %>
+</ul>

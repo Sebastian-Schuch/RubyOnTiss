@@ -11,7 +11,14 @@ class MotherclassController < ApplicationController
     case self.class.name
     when 'PersonController'
       @siteName = "Person"
-      @data = tiss_http_fetcher.search_people "Alex"
+
+      @searchDataResponse = []
+      if params[:search].present?
+        param = params[:search]
+        @searchDataResponse = tiss_http_fetcher.search_people param
+      end
+
+
     when 'CoursesController'
       @siteName = "Courses"
     when 'ThesesController'
@@ -25,7 +32,7 @@ class MotherclassController < ApplicationController
 
   #This method will be used to search for a specific item
   # #returns the search results in xml
-  def search(param)
+  def search
     #@search = param
   end
 
