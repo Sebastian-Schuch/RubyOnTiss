@@ -1,0 +1,3 @@
+class ThesesController < MotherclassController
+
+end
