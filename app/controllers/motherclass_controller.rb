@@ -12,11 +12,7 @@ class MotherclassController < ApplicationController
     when 'PersonController'
       @siteName = "Person"
 
-      @searchDataResponse = []
-      if params[:search].present?
-        param = params[:search]
-        @searchDataResponse = tiss_http_fetcher.search_people param
-      end
+
 
 
     when 'CoursesController'

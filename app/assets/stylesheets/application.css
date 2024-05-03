@@ -22,7 +22,13 @@ body{
 }
 
 #main{
+    display: flex;
+    flex-direction: column;
     margin: 30px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap
 }
 
 ul {
@@ -71,6 +77,58 @@ li a:hover:not(.active) {
 
 .topnav #myLinks {
     display: block;
+}
+
+
+
+#searchResults{
+    max-width: 500px;
+    position: relative;
+    display: flex;
+    margin: 20px;
+}
+
+.searchTesponseListUl{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    //overflow: visible;
+    border: none;
+    background-color: transparent;
+}
+
+.searchResultListItem{
+    margin-bottom: 20px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e7e7e7 ;
+}
+
+.searchResponseInfoContainer{
+    padding: 10px;
+    margin-left: 10px;
+    width: 60%;
+    display: block;
+}
+
+.searchResponseIconsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchResponseIconsDiv{
+   // background-color: #666666;
+    height: 100%;
+}
+
+.btn-img {
+    width: auto;
+    height: 30px;
 }
 
 @media screen and (max-width: 600px) {
