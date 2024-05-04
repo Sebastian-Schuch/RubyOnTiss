@@ -100,13 +100,14 @@ li a:hover:not(.active) {
 
 .searchResultListItem{
     margin-bottom: 20px;
-    width: 95%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     //padding: 10px;
     border-radius: 10px;
     border: 1px solid #e7e7e7 ;
+    overflow: hidden;
 }
 
 .searchResponseInfoContainer{
@@ -120,6 +121,7 @@ li a:hover:not(.active) {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .searchResponseIconsDiv{
    // background-color: #666666;
@@ -128,7 +130,69 @@ li a:hover:not(.active) {
 
 .btn-img {
     width: auto;
-    height: 30px;
+    height: 28px;
+}
+
+.searchResponseIconsLink{
+    display: flex;
+    padding: 22px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.searchForm{
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+
+.searchInput{
+    width: 70%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.searchSubmitButton{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #f3f3f3;
+    color: #666;
+    cursor: pointer;
+}
+
+
+
+
+/* ******************* Detail Page ******************* */
+
+.personDetailContainer{
+    max-width: 600px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.personDetailImage{
+    width: 100%;
 }
 
 @media screen and (max-width: 600px) {

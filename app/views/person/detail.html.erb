@@ -1,4 +1,7 @@
+
+<section class="personDetailContainer">
 <h1><%= "#{@gender} #{@firstname} #{@lastname}" %></h1>
 <p><%= "#{@pre_title}" %></p>
-<%= image_tag @picture, alt: "Picture of #{@firstname} #{@lastname}" %>
+<%= image_tag @picture, class: 'personDetailImage', alt: "Picture of #{@firstname} #{@lastname}" %>
+</section>
 
