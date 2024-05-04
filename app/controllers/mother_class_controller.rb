@@ -41,7 +41,6 @@ class MotherClassController < ApplicationController
   # renders the details in the xml data
   def get_details
     parse_xml @detail
-
     render :detail
   end
 

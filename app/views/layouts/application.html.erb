@@ -24,8 +24,9 @@
   <body>
 
   <nav class="topnav">
-
-    <a href="#home" id="logo-mobile"><%= image_tag 'rubyOnTiss-logo-png.png', class:'nav-img-logo', alt: 'Ruby on Tiss Logo' %></a>
+    <%=link_to root_path, id:'mobile-menu-icon' do %>
+    <%= image_tag 'rubyOnTiss-logo-png.png', class:'nav-img-logo', alt: 'Ruby on Tiss Logo' %>
+      <% end %>
     <div id="myLinks">
       <ul>
         <li id="logo-desktop"><%= image_tag 'rubyOnTiss-logo-png.png', class:'nav-img-logo', alt: 'Ruby on Tiss Logo' %></li>

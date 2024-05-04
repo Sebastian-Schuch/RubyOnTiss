@@ -1,0 +1,29 @@
+<div class="button-grid">
+  <%= link_to person_path do %>
+    <div class="button">
+      <%= image_tag('person.png', class: 'button-icon') %>
+      <span class="button-title">Person</span>
+    </div>
+  <% end %>
+
+  <%= link_to courses_path do %>
+    <div class="button">
+      <%= image_tag('courses.png', class: 'button-icon') %>
+      <span class="button-title">Courses</span>
+    </div>
+  <% end %>
+
+  <%= link_to projects_path do %>
+    <div class="button">
+      <%= image_tag('project.png', class: 'button-icon') %>
+      <span class="button-title">Projects</span>
+    </div>
+  <% end %>
+
+  <%= link_to theses_path do %>
+    <div class="button">
+      <%= image_tag('theses.png', class: 'button-icon') %>
+      <span class="button-title">Theses</span>
+    </div>
+  <% end %>
+</div>

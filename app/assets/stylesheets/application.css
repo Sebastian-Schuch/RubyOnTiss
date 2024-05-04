@@ -79,8 +79,6 @@ li a:hover:not(.active) {
     display: block;
 }
 
-
-
 #searchResults{
     max-width: 500px;
     position: relative;
@@ -193,6 +191,40 @@ li a:hover:not(.active) {
 
 .personDetailImage{
     width: 100%;
+}
+
+/* ******************* Home Page ******************* */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #e0e0e0;
+}
+
+.button-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.button-title {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
