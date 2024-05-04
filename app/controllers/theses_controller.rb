@@ -1,3 +1,3 @@
-class ThesesController < MotherclassController
+class ThesesController < MotherClassController
 
 end

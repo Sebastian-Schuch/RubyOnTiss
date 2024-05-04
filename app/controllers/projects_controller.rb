@@ -1,3 +1,3 @@
-class ProjectsController < MotherclassController
+class ProjectsController < MotherClassController
 
 end

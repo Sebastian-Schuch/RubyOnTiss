@@ -1,6 +1,6 @@
 
 require_relative '../services/tiss_http_fetcher.rb'
-class MotherclassController < ApplicationController
+class MotherClassController < ApplicationController
 
 
   #This is the mother class that will be inherited by all other classes
@@ -8,6 +8,7 @@ class MotherclassController < ApplicationController
   def index
     tiss_http_fetcher = TissHttpFetcher.new
     @site_name = "Application"
+
     case self.class.name
     when 'PersonController'
       @site_name = "Person"
@@ -17,7 +18,7 @@ class MotherclassController < ApplicationController
         @search_data_response = tiss_http_fetcher.search_people params[:search]
       end
       if params[:id].present?
-        @person_detail = tiss_http_fetcher.get_person params[:id]
+        @detail = tiss_http_fetcher.get_person params[:id]
       end
     when 'CoursesController'
       @site_name = "Courses"
@@ -31,29 +32,26 @@ class MotherclassController < ApplicationController
   end
 
   #This method will be used to search for a specific item
-  # #returns the search results in xml
+  # renders a list of the items in the json data
   def search
-    #@search = param
+    render :index
   end
 
   #This method will be used to get the details of a specific item
-  # #returs the details of the item in xml
-  def getDetails(id)
-    @id = id
+  # renders the details in the xml data
+  def get_details
+    parse_xml @detail
 
+    render :detail
   end
 
-  #This method will be used to parse the XML file
-  # #returns the parsed XML file in plain text
-  def parseXML(xml)
-    @xml = xml
+  #This method will be used to parse the xml data
+  def parse_xml(xml)
 
   end
 
   #This method will add an item to the favorites list
-  def addFavorite(id)
-    @id = id
-    @time = Time.now
+  def add_favorite(id)
   end
 
 end

@@ -1,27 +1,8 @@
 require_relative '../services/tiss_http_fetcher.rb'
 require 'nokogiri'
 
-class PersonController < MotherclassController
+class PersonController < MotherClassController
   before_action :index
-
-  def setup
-    @tiss_http_fetcher = TissHttpFetcher.new
-  end
-
-  def test
-    render html: @search
-  end
-
-  def search
-    render :index
-  end
-
-  def get_details
-
-    parse_xml @person_detail
-
-    render :detail
-  end
 
   def parse_xml(xml)
     @firstname = xml.xpath("//firstname").text

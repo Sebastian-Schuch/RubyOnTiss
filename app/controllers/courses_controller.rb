@@ -1,3 +1,3 @@
-class CoursesController < MotherclassController
+class CoursesController < MotherClassController
 
 end
