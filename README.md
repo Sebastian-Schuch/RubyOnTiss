@@ -1,5 +1,15 @@
 # RubyOnTiss
 
+Project members:
+- Jonathan Schort (12225164)
+- Sebastian Schuch (12222156)
+
+Versions:
+- Ruby: 3.1.2
+- Rails: 7.0.1
+
+Launch server with: rails server
+
 Proxy of the Tiss page.
 
 Time tracking:
