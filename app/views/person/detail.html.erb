@@ -1,7 +1,15 @@
+<div class="card">
+  <div class="card-image">
+    <% if @picture.present? %>
+      <%= image_tag @picture, class: 'card-img', alt: "Picture of #{@firstname} #{@lastname}" %>
+    <% else %>
+      <%= image_tag("person.png", class: 'card-img', alt: "Picture of #{@firstname} #{@lastname}") %>
+    <% end %>
+  </div>
+  <div class="card-content">
+    <p class="card-subtitle"><%= "#{@pre_title}" %></p>
+    <h2 class="card-title"><%= "#{@gender} #{@firstname} #{@lastname}" %></h2>
+  </div>
+</div>
 
-<section class="personDetailContainer">
-<h1><%= "#{@gender} #{@firstname} #{@lastname}" %></h1>
-<p><%= "#{@pre_title}" %></p>
-<%= image_tag @picture, class: 'personDetailImage', alt: "Picture of #{@firstname} #{@lastname}" %>
-</section>
-
+<%= link_to 'Go Back', :back, class: 'back-button' %>
