@@ -14,6 +14,16 @@ class TissHttpFetcher
     fetch_request(uri)
   end
 
+  def search_courses(param)
+    uri = "search/course/v1.0/quickSearch?searchterm=#{param}"
+    fetch_request(uri)
+  end
+
+  def get_course(id)
+    uri = "course/#{id}"
+    fetch_request(uri)
+  end
+
   def fetch_request(endpoint)
     uri = URI("#{BASE_URL}#{endpoint}")
     response = Net::HTTP.get_response(uri)

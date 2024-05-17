@@ -305,6 +305,7 @@ li a:hover:not(.active) {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    padding: 5px;
 }
 
 .card-image {

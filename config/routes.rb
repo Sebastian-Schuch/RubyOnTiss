@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/person/:id/detail', to: 'person#get_details', as: 'person_detail'
   get '/person/:id/favorite', to: 'person#add_favorite', as: 'person_favorite'
   get "/courses", to: "courses#index"
+  get "/courses/:id/detail", to: "courses#get_details", as: "course_detail"
+  get "/courses/:id/favorite", to: "courses#get_favorite", as: "course_favorite"
   get "/projects", to: "projects#index"
   get "/theses", to: "theses#index"
 end
