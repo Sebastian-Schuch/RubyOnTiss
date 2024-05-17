@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get "/courses/:id/favorite", to: "courses#get_favorite", as: "course_favorite"
   get "/projects", to: "projects#index"
   get "/theses", to: "theses#index"
+  get '/theses/:id/detail', to: 'theses#get_details', as: 'theses_detail'
+  get '/theses/:id/favorite', to: 'theses#add_favorite', as: 'theses_favorite'
 end
