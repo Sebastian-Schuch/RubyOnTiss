@@ -1,1 +1,45 @@
 <h1><%= @site_name %></h1>
+
+
+<%= form_tag('/theses', method: 'get', class: 'searchForm')  do %>
+  <%= text_field_tag :search, params[:search], class:'searchInput'%>
+  <%= submit_tag 'Suchen', class: 'searchSubmitButton' %>
+<% end %>
+
+<% if @search_data_response.present? && @search_data_response["results"].present? %>
+
+  <div id="searchResults">
+
+    <ul class="searchTesponseListUl">
+      <% if responseData =  @search_data_response["results"] %>
+        <% responseData.each do |result| %>
+          <li class="searchResultListItem">
+            <div class="searchResponseInfoContainer">
+              <strong><% if result["title"] %>
+                <%= result["title"] %><br>
+              <%end %></strong>
+              <%= result["short"] %>
+                <%= result["short"] %>
+            </div>
+
+            <div class="searchResponseIconsContainer">
+              <div class="searchResponseIconsDiv">
+                <%= link_to theses_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
+                  <%= image_tag 'detail.png', class: "btn-img" %>
+                <% end %>
+              </div>
+
+              <div class="searchResponseIconsDiv">
+                <%= link_to theses_favorite_path(result["id"]), class: 'searchResponseIconsLink' do %>
+                  <%= image_tag 'favorite.png', class: "btn-img" %>
+                <% end %>
+              </div>
+            </div>
+          </li>
+
+        <% end %>
+      <% end %>
+    </ul>
+
+  </div>
+<% end %>

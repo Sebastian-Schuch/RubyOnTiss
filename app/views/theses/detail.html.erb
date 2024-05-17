@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-image">
+  <div class="card-content">
+    <h2 class="card-title"><%= "#{@title}" %></h2>
+    <br>
+    <p class="card-subtitle">Institute Name:</p>
+    <p class="card-content"><%= "#{@instituteName}" %></p>
+    <p class="card-subtitle">Faculty Name:</p>
+    <p class="card-content"><%= "#{@facultyName}" %></p>
+    <p class="card-subtitle">Keywords:</p>
+    <p class="card-content"><%= "#{@keywords}" %></p>
+    <p class="card-subtitle">Abstract:</p>
+    <p class="card-content">
+      <a href="<%= @url %>">More Info</a>
+    </p>
+  </div>
+
+</div>
+
+<%= link_to 'Go Back', :back, class: 'back-button' %>

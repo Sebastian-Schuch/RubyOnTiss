@@ -23,7 +23,15 @@ class MotherClassController < ApplicationController
     when 'CoursesController'
       @site_name = "Courses"
     when 'ThesesController'
-      @site_name = "Thesis"
+      @site_name = "Theses"
+
+      @search_data_response = []
+      if params[:search].present?
+        @search_data_response = tiss_http_fetcher.search_theses params[:search]
+      end
+      if params[:id].present?
+        @detail = tiss_http_fetcher.get_theses params[:id]
+      end
     when 'ProjectsController'
       @site_name = "Projects"
     else

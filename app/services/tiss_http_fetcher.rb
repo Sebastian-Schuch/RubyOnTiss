@@ -9,8 +9,18 @@ class TissHttpFetcher
     fetch_request(uri)
   end
 
+  def search_theses(param)
+    uri = "search/thesis/v1.0/quickSearch?searchterm=" + param
+    fetch_request(uri)
+  end
+
   def get_person(id)
     uri = "person/v21/id/#{id}"
+    fetch_request(uri)
+  end
+
+  def get_theses(id)
+    uri = "thesis/#{id}"
     fetch_request(uri)
   end
 
@@ -19,7 +29,7 @@ class TissHttpFetcher
     response = Net::HTTP.get_response(uri)
 
     unless response.is_a?(Net::HTTPSuccess)
-      raise "Request failed with code #{response.code}"
+      #raise "Request failed with code #{response.code}"
     end
 
     case response.content_type
