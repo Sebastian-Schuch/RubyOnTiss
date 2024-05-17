@@ -42,6 +42,14 @@ class MotherClassController < ApplicationController
       end
     when 'ProjectsController'
       @site_name = "Projects"
+
+      @search_data_response = []
+      if params[:search].present?
+        @search_data_response = tiss_http_fetcher.search_projects params[:search]
+      end
+      if params[:id].present?
+        @detail = tiss_http_fetcher.get_project params[:id]
+      end
     else
       "This is a generic message for unknown controllers"
     end

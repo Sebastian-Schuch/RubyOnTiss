@@ -14,6 +14,16 @@ class TissHttpFetcher
     fetch_request(uri)
   end
 
+  def search_projects(param)
+    uri = "search/projectFullSearch/v1.0/projects?searchterm=" + param
+    fetch_request(uri)
+  end
+
+  def get_project(id)
+    uri = "/pdb/rest/project/v2/#{id}"
+    fetch_request(uri)
+  end
+
   def get_person(id)
     uri = "person/v21/id/#{id}"
     fetch_request(uri)
