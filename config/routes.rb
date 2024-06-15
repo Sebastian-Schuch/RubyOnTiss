@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   # Courses routes
   get "/courses", to: "courses#index"
-  get "/courses/:title/detail", to: "courses#get_details", as: "course_detail"
-  post '/courses/favorite', to: 'favorites#create', as: 'course_favorite'
+  get "/courses/:id/detail", to: "courses#get_details", as: "course_detail"
+  post '/courses/:id/favorite', to: 'favorites#create', as: 'course_favorite'
 
   # Projects routes
   get "/projects", to: "projects#index"

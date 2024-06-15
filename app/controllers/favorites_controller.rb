@@ -1,13 +1,16 @@
 # app/controllers/favorites_controller.rb
 class FavoritesController < ApplicationController
   before_action :set_user
+  include CoursesHelper
 
   def index
-    @type = params[:type]
+    @type = params[:type] || 'all'
+    @sort = params[:sort] || ''
+
     @favorites = @user.favorites.includes(:favoritable)
     @favorites = @favorites.where(favoritable_type: @type) if @type.present? && @type != 'all'
 
-    if params[:sort] == 'title'
+    if @sort == 'title'
       @favorites = @favorites.sort_by { |f| f.favoritable.title_with_short.strip.downcase }
     else
       @favorites = @favorites.order(created_at: :asc)
@@ -15,7 +18,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    favoritable = find_or_create_favoritable(params[:type], favorite_params(params[:type]))
+    favoritable = find_or_create_favoritable(params[:type], create_favorite_params(params[:type]))
     favorite = @user.favorites.new(favoritable: favoritable)
 
     if favorite.save
@@ -29,7 +32,7 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = @user.favorites.find(params[:id])
     favorite.destroy
-    redirect_to favorites_path, notice: 'Removed from favorites'
+    redirect_to favorites_path(type: params[:type], sort: params[:sort]), notice: 'Removed from favorites'
   end
 
   def edit
@@ -38,32 +41,39 @@ class FavoritesController < ApplicationController
 
   def update
     @favorite = @user.favorites.find(params[:id])
-    if @favorite.update(favorite_params(params[:type]))
-      redirect_to favorites_path, notice: 'Updated favorite'
+    type = @favorite.favoritable_type
+    params[:favorite].delete(:type) # Remove the type parameter
+    Rails.logger.debug { "Update Params: #{update_favorite_params(type)}" }
+    if @favorite.update(update_favorite_params(type))
+      redirect_to favorites_path(type: params[:type], sort: params[:sort]), notice: 'Updated favorite'
     else
       render :edit
     end
   end
 
-  private
-
   def set_user
-    @user = User.first # Use the sample user for now
+    authenticate_user
+    @user = current_user
   end
 
-  def favorite_params(type)
+  def create_favorite_params(type)
     case type
     when 'Person'
-      params.permit(:type, :id, :firstname, :lastname, :gender, :prefix_title, :postfix_title, :adressbuch_benutzerbild, :adressbuch_visitenkarte, :keywords, :personal_notes)
+      params.permit(:type, :id, :firstname, :lastname, :gender, :prefix_title, :postfix_title, :adressbuch_benutzerbild, :adressbuch_visitenkarte)
     when 'Course'
-      params.permit(:type, :title, :short, :detail_url, :keywords, :personal_notes)
+      params.permit(:type, :id, :title, :short, :detail_url)
     when 'Project'
-      params.permit(:type, :title, :short, :detail_url, :detail_url_rest, :keywords, :personal_notes)
+      params.permit(:type, :id, :title, :short, :detail_url, :detail_url_rest)
     when 'Thesis'
-      params.permit(:type, :title, :short, :detail_url, :keywords, :personal_notes)
+      params.permit(:type, :id, :title, :short, :detail_url)
     else
+      Rails.logger.debug { "Unknown favoritable type: #{type}" }
       raise "Unknown favoritable type"
     end
+  end
+
+  def update_favorite_params(type)
+    params.require(:favorite).permit(:keywords, :personal_notes)
   end
 
   def find_or_create_favoritable(type, attributes)
@@ -80,10 +90,12 @@ class FavoritesController < ApplicationController
         person.save!
       end
     when 'Course'
-      Course.find_or_create_by(title: attributes[:title]) do |course|
+      course_id = extract_parameters(attributes[:detail_url])
+      Course.find_or_create_by(custom_id: course_id) do |course|
         course.title = attributes[:title]
         course.short = attributes[:short]
         course.detail_url = attributes[:detail_url]
+        course.custom_id = course_id
         course.save!
       end
     when 'Project'

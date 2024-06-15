@@ -1,16 +1,6 @@
 class ThesesController < MotherClassController
-
   before_action :index
 
-  def index
-    tiss_http_fetcher = TissHttpFetcher.new
-    @site_name = "Theses"
-
-    @search_data_response = []
-    if params[:search].present?
-      @search_data_response = tiss_http_fetcher.search_theses(params[:search])
-    end
-  end
   def parse_xml(xml)
     @title = xml.xpath("//title").text
     @instituteName = xml.xpath("//instituteName").text

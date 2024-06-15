@@ -4,7 +4,7 @@ module FavoritesHelper
     when Person
       person_detail_path(favoritable)
     when Course
-      course_detail_path(title: favoritable.title)
+      course_detail_path(id: favoritable.custom_id)
     when Project
       projects_detail_path(favoritable)
     when Thesis

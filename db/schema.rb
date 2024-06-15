@@ -14,11 +14,12 @@ ActiveRecord::Schema.define(version: 2024_06_15_124850) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.text "short"
     t.string "detail_url"
+    t.string "custom_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["custom_id"], name: "index_courses_on_custom_id", unique: true
   end
 
   create_table "favorites", force: :cascade do |t|

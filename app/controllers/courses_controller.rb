@@ -10,4 +10,9 @@ class CoursesController < MotherClassController
     @institution = detail.xpath("//instituteName").text
     @teaching_content = detail.xpath("//teachingContent").text
   end
+
+  def add_favorite
+    @id = params[:id]
+    @time = Time.now
+  end
 end

@@ -4,24 +4,23 @@ require_relative '../services/tiss_http_fetcher'
 class MotherClassController < ApplicationController
   def index
     authenticate_user
-
     tiss_http_fetcher = TissHttpFetcher.new
     @site_name = controller_name.capitalize
 
     @search_data_response = []
     @detail = nil
     perform_search(tiss_http_fetcher) if params[:search].present?
+    Rails.logger.debug { "search_#{controller_name.singularize}" }
     fetch_details(tiss_http_fetcher) if params[:id].present?
   end
 
   def perform_search(tiss_http_fetcher)
+    Rails.logger.debug { "search_#{controller_name.singularize}" }
     search_request = SearchRequest.new(query: params[:search])
     if search_request.valid?
-      Rails.logger.debug { "search_#{controller_name.singularize}" }
       search_method = "search_#{controller_name.singularize}"
       if tiss_http_fetcher.respond_to?(search_method)
         @search_data_response = tiss_http_fetcher.send(search_method, params[:search])
-        Rails.logger.debug { "Search Data Response: #{@search_data_response}" }
       else
         flash[:error] = "Search method for #{controller_name} not implemented"
       end
