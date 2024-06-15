@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<%= form_with url: login_create_path, local: true do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.submit "Login" %>
+  </div>
+<% end %>
+<span>No Account yet?</span>
+<button class="userButton"><%= link_to 'Go to Sign Up', register_path, class:"textDecorationNone" %></button>

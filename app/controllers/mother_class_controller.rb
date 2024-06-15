@@ -3,6 +3,8 @@ require_relative '../services/tiss_http_fetcher'
 
 class MotherClassController < ApplicationController
   def index
+    authenticate_user
+
     tiss_http_fetcher = TissHttpFetcher.new
     @site_name = controller_name.capitalize
 
