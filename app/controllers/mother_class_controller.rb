@@ -6,6 +6,8 @@ class MotherClassController < ApplicationController
   #This is the mother class that will be inherited by all other classes
 
   def index
+    authenticate_user
+
     tiss_http_fetcher = TissHttpFetcher.new
     @site_name = "Application"
 

@@ -308,6 +308,8 @@ li a:hover:not(.active) {
     padding: 5px;
 }
 
+
+
 .card-image {
     width: 100%;
     height: auto;
@@ -348,5 +350,52 @@ li a:hover:not(.active) {
     text-decoration: none;
     color: #000;
     cursor: pointer;
+}
+
+
+form {
+    width: 90%;
+    margin: auto;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form input[type="text"], form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.userButton {
+    width: 90%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.textDecorationNone{
+    text-decoration: none;
+    color: white;
+}
+
+.userButton:hover {
+    background-color: #45a049;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
 }
 

@@ -17,4 +17,9 @@ Rails.application.routes.draw do
   get "/theses", to: "theses#index"
   get '/theses/:id/detail', to: 'theses#get_details', as: 'theses_detail'
   get '/theses/:id/favorite', to: 'theses#add_favorite', as: 'theses_favorite'
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#create', as: 'login_create'
+  get '/register', to: 'users#new', as: 'register'
+  post '/register', to: 'users#create', as: 'register_create'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 end

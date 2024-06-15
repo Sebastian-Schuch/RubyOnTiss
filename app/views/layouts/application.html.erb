@@ -35,6 +35,8 @@
         <li><%= link_to 'Courses', courses_path %></li>
         <li><%= link_to 'Projects', projects_path %></li>
         <li><%= link_to 'Theses', theses_path %></li>
+        <li class="right-nav"><%= link_to 'Login', login_path unless logged_in? %></li>
+        <li class="right-nav"><%= link_to 'Logout', logout_path if logged_in? %></li>
       </ul>
     </div>
 
