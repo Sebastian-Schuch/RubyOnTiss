@@ -1,16 +1,44 @@
 <h1>Favorites</h1>
 
+<div class="filter-container">
+  <%= form_with url: favorites_path, method: :get, local: true, class: "filter-form" do %>
+    <div class="form-group">
+      <label for="type">Filter by Type:</label>
+      <select name="type" id="type" class="form-control" onchange="this.form.submit()">
+        <option value="all" <%= 'selected' if params[:type].blank? || params[:type] == 'all' %>>Show All</option>
+        <option value="Person" <%= 'selected' if params[:type] == 'Person' %>>Person</option>
+        <option value="Course" <%= 'selected' if params[:type] == 'Course' %>>Course</option>
+        <option value="Project" <%= 'selected' if params[:type] == 'Project' %>>Project</option>
+        <option value="Thesis" <%= 'selected' if params[:type] == 'Thesis' %>>Thesis</option>
+      </select>
+    </div>
+  <% end %>
+
+  <%= form_with url: favorites_path, method: :get, local: true, class: "filter-form" do %>
+    <div class="form-group">
+      <label for="sort">Sort by:</label>
+      <select name="sort" id="sort" class="form-control" onchange="this.form.submit()">
+        <option value="" <%= 'selected' if params[:sort].blank? %>>Registration Date</option>
+        <option value="title" <%= 'selected' if params[:sort] == 'title' %>>Title A-Z</option>
+      </select>
+    </div>
+  <% end %>
+</div>
+
 <div class="favorites-container">
   <% @favorites.each do |favorite| %>
     <div class="favorite-card">
+      <span class="badge"><%= favorite.favoritable_type %></span>
       <h2><%= link_to favoritable_display_name(favorite.favoritable), favoritable_path(favorite.favoritable) %></h2>
       <p><%= favorite.created_at %></p>
 
-      <%= form_with url: favorite_path(favorite), method: :delete, local: true do %>
-        <%= submit_tag 'Remove', class: 'btn btn-danger' %>
-      <% end %>
+      <div class="button-group">
+        <%= form_with url: favorite_path(favorite), class:"remove-button-form", method: :delete, local: true do %>
+          <%= submit_tag 'Remove', class: 'btn btn-danger' %>
+        <% end %>
 
-      <%= link_to 'Edit', edit_favorite_path(favorite), class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_favorite_path(favorite), class: 'btn btn-primary' %>
+      </div>
     </div>
   <% end %>
 </div>

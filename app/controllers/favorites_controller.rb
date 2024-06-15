@@ -3,8 +3,15 @@ class FavoritesController < ApplicationController
   before_action :set_user
 
   def index
-    @favorites = @user.favorites.order(:created_at)
-    @favorites = @favorites.order(title: :asc) if params[:sort] == 'title'
+    @type = params[:type]
+    @favorites = @user.favorites.includes(:favoritable)
+    @favorites = @favorites.where(favoritable_type: @type) if @type.present? && @type != 'all'
+
+    if params[:sort] == 'title'
+      @favorites = @favorites.sort_by { |f| f.favoritable.title_with_short.strip.downcase }
+    else
+      @favorites = @favorites.order(created_at: :asc)
+    end
   end
 
   def create
@@ -41,20 +48,19 @@ class FavoritesController < ApplicationController
   private
 
   def set_user
-    authenticate_user
-    @user = current_user
+    @user = User.first # Use the sample user for now
   end
 
   def favorite_params(type)
     case type
     when 'Person'
-      params.permit(:type, :id, :firstname, :lastname, :gender, :prefix_title, :postfix_title, :adressbuch_benutzerbild, :adressbuch_visitenkarte)
+      params.permit(:type, :id, :firstname, :lastname, :gender, :prefix_title, :postfix_title, :adressbuch_benutzerbild, :adressbuch_visitenkarte, :keywords, :personal_notes)
     when 'Course'
-      params.permit(:type, :title, :short, :detail_url)
+      params.permit(:type, :title, :short, :detail_url, :keywords, :personal_notes)
     when 'Project'
-      params.permit(:type, :title, :short, :detail_url, :detail_url_rest)
+      params.permit(:type, :title, :short, :detail_url, :detail_url_rest, :keywords, :personal_notes)
     when 'Thesis'
-      params.permit(:type, :title, :short, :detail_url)
+      params.permit(:type, :title, :short, :detail_url, :keywords, :personal_notes)
     else
       raise "Unknown favoritable type"
     end

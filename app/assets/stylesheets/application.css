@@ -418,53 +418,6 @@ searchForm {
     background-color: yellow;
 }
 
-/********* Fovorites page ********* */
-.favorites-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.favorite-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.favorite-card h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.favorite-card p {
-    font-size: 0.9em;
-    color: #666;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 5px 0;
-    font-size: 0.9em;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-}
-
-.btn-primary {
-    background-color: #007bff;
-}
 /* ******* for reports etc ******** */
 searchForm {
     margin-bottom: 20px;
@@ -532,131 +485,51 @@ searchForm {
 }
 
 /********* Fovorites page ********* */
-.favorites-container {
+/* General layout */
+.filter-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 20px; /* Add space between filter forms */
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 500px;
 }
 
-.favorite-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.filter-form .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-.favorite-card h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+.filter-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.favorite-card p {
-    font-size: 0.9em;
-    color: #666;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 5px 0;
-    font-size: 0.9em;
-    color: white;
-    background-color: #007bff;
-    border: none;
+.filter-form select {
+    width: 100%;
+    padding: 10px;
     border-radius: 4px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
+    border: 1px solid #ccc;
 }
 
-.btn-danger {
-    background-color: #dc3545;
-}
-
-.btn-primary {
-    background-color: #007bff;
-}
-/* ******* for reports etc ******** */
-searchForm {
-    margin-bottom: 20px;
-}
-
-.searchInput {
-    padding: 10px;
-    font-size: 16px;
-}
-
-.searchSubmitButton {
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
-#searchResults {
-    margin-top: 20px;
-}
-
-.searchResponseListUl {
-    list-style-type: none;
-    padding: 0;
-}
-
-.searchResultListItem {
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-}
-
-.searchResponseInfoContainer {
-    margin-bottom: 10px;
-}
-
-.searchResponseIconsContainer {
-    display: flex;
-}
-
-.searchResponseIconsDiv {
-    margin-right: 10px;
-}
-
-.btn-img {
-    width: 20px;
-    height: 20px;
-}
-
-.favorite-button {
-    background-color: #ffcc00;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.favorite-button:hover {
-    background-color: #ff9900;
-}
-
-.report-section {
-    margin-top: 20px;
-}
-
-.highlight {
-    background-color: yellow;
-}
-
-/********* Fovorites page ********* */
 .favorites-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
 .favorite-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -670,10 +543,38 @@ searchForm {
     color: #666;
 }
 
+.favorite-card .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 12px;
+    text-transform: capitalize;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.remove-button-form{
+    display: flex;
+    flex: 1;
+}
+
+.button-group .btn {
+    flex: 1;
+}
+
+/* Buttons */
 .btn {
     display: inline-block;
-    padding: 10px 15px;
-    margin: 5px 0;
+    padding: 10px;
     font-size: 0.9em;
     color: white;
     background-color: #007bff;
@@ -692,49 +593,17 @@ searchForm {
     background-color: #007bff;
 }
 
-form {
-    width: 90%;
-    margin: auto;
+.btn-secondary {
+    background-color: #6c757d;
 }
 
-form div {
-    margin-bottom: 15px;
-}
+/* Media Queries for Mobile Optimization */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+    }
 
-form input[type="text"], form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+    .favorite-card {
+        width: 100%;
+    }
 }
-
-form input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.userButton {
-    width: 90%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.textDecorationNone{
-    text-decoration: none;
-    color: white;
-}
-
-.userButton:hover {
-    background-color: #45a049;
-}
-
-form input[type="submit"]:hover {
-    background-color: #45a049;
-}
-

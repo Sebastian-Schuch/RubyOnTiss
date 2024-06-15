@@ -5,4 +5,8 @@ class Person < ApplicationRecord
     [prefix_title, firstname, lastname, postfix_title].compact.join(' ')
   end
 
+  def title_with_short
+    full_name
+  end
+
 end
