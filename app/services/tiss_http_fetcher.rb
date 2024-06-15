@@ -4,7 +4,7 @@ require 'nokogiri'
 
 class TissHttpFetcher
   BASE_URL = "https://tiss.tuwien.ac.at/api/"
-  def search_people(param)
+  def search_person(param)
     uri = "person/v21/psuche?q=" + param
     fetch_request(uri)
   end
@@ -14,8 +14,13 @@ class TissHttpFetcher
     fetch_request(uri)
   end
 
-  def search_projects(param)
+  def search_project(param)
     uri = "search/projectFullSearch/v1.0/projects?searchterm=" + param
+    fetch_request(uri)
+  end
+
+  def search_course(param)
+    uri = "search/course/v1.0/quickSearch?searchterm=#{param}"
     fetch_request(uri)
   end
 
@@ -34,12 +39,7 @@ class TissHttpFetcher
     fetch_request(uri)
   end
 
-  def search_courses(param)
-    uri = "search/course/v1.0/quickSearch?searchterm=#{param}"
-    fetch_request(uri)
-  end
-
-  def get_course(id)
+  def get_courses(id)
     uri = "course/#{id}"
     fetch_request(uri)
   end
@@ -49,15 +49,19 @@ class TissHttpFetcher
     response = Net::HTTP.get_response(uri)
 
     unless response.is_a?(Net::HTTPSuccess)
-      #raise "Request failed with code #{response.code}"
+      raise "Request failed with code #{response.code}"
     end
 
     case response.content_type
     when 'application/json'
-      JSON.parse(response.body)
+      json_response = JSON.parse(response.body)
+      Rails.logger.debug { "JSON Response: #{json_response}" }
+      json_response
     when 'text/html', 'application/xml'
       doc = Nokogiri::XML(response.body)
       doc.remove_namespaces!
+      Rails.logger.debug { "XML Response: #{doc}" }
+      doc
     else
       raise "Unsupported content type #{response.content_type}"
     end
