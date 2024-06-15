@@ -1,45 +1,51 @@
 <h1><%= @site_name %></h1>
 
-
-<%= form_tag('/person', method: 'get', class: 'searchForm')  do %>
-  <%= text_field_tag :search, params[:search], class:'searchInput'%>
+<%= form_tag('/person', method: 'get', class: 'searchForm') do %>
+  <%= text_field_tag :search, params[:search], class: 'searchInput' %>
   <%= submit_tag 'Suchen', class: 'searchSubmitButton' %>
 <% end %>
 
 <% if @search_data_response.present? && @search_data_response["results"].present? %>
-
-<div id="searchResults">
-
-  <ul class="searchTesponseListUl">
-      <% if responseData =  @search_data_response["results"] %>
-      <% responseData.each do |result| %>
-        <li class="searchResultListItem">
-          <div class="searchResponseInfoContainer">
-            <% if result["prefixTitle"] %>
+  <div id="searchResults">
+    <ul class="searchTesponseListUl">
+      <% if responseData = @search_data_response["results"] %>
+        <% responseData.each do |result| %>
+          <li class="searchResultListItem">
+            <div class="searchResponseInfoContainer">
+              <% if result["prefixTitle"] %>
                 <%= result["prefixTitle"] %><br>
-            <%end %>
-            <strong><%= result["firstname"] %>
-            <%= result["lastname"] %></strong>
-          </div>
+              <% end %>
+              <strong><%= result["firstname"] %> <%= result["lastname"] %></strong>
+            </div>
 
-          <div class="searchResponseIconsContainer">
-            <div class="searchResponseIconsDiv">
-            <%= link_to person_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
-              <%= image_tag 'detail.png', class: "btn-img" %>
-            <% end %>
-          </div>
+            <div class="searchResponseIconsContainer">
+              <div class="searchResponseIconsDiv">
+                <%= link_to person_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
+                  <%= image_tag 'detail.png', class: "btn-img" %>
+                <% end %>
+              </div>
 
-          <div class="searchResponseIconsDiv">
-            <%= link_to person_favorite_path(result["id"]), class: 'searchResponseIconsLink' do %>
-              <%= image_tag 'favorite.png', class: "btn-img" %>
-            <% end %>
-          </div>
-
-          </div>
-        </li>
-
+              <div class="searchResponseIconsDiv">
+                <%= form_with url: person_favorite_path(result["id"]), method: :post, local: true do |form| %>
+                  <%= form.hidden_field :type, value: 'Person' %>
+                  <%= form.hidden_field :firstname, value: result["firstname"] %>
+                  <%= form.hidden_field :lastname, value: result["lastname"] %>
+                  <%= form.hidden_field :gender, value: result["gender"] %>
+                  <%= form.hidden_field :prefix_title, value: result["prefixTitle"] %>
+                  <%= form.hidden_field :postfix_title, value: result["postfixTitle"] %>
+                  <%= form.hidden_field :adressbuch_benutzerbild, value: result["adressbuch_benutzerbild"] %>
+                  <%= form.hidden_field :adressbuch_visitenkarte, value: result["adressbuch_visitenkarte"] %>
+                  <%= form.submit do %>
+                    <%= image_tag 'favorite.png', class: "btn-img" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
+<% else %>
+  <p>No results found.</p>
 <% end %>

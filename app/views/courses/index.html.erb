@@ -1,41 +1,43 @@
 <h1><%= @site_name %></h1>
 
-
-<%= form_tag('/courses', method: 'get', class: 'searchForm')  do %>
-  <%= text_field_tag :search, params[:search], class:'searchInput'%>
+<%= form_tag('/courses', method: 'get', class: 'searchForm') do %>
+  <%= text_field_tag :search, params[:search], class: 'searchInput' %>
   <%= submit_tag 'Suchen', class: 'searchSubmitButton' %>
 <% end %>
 
 <% if @search_data_response.present? && @search_data_response["results"].present? %>
-
   <div id="searchResults">
+    <ul class="searchResponseListUl">
+      <% @search_data_response["results"].each do |result| %>
+        <li class="searchResultListItem">
+          <div class="searchResponseInfoContainer">
+            <strong><%= result["title"] %></strong>
+            <p><%= result["short"] %></p>
+          </div>
 
-    <ul class="searchTesponseListUl">
-      <% if responseData =  @search_data_response["results"] %>
-        <% responseData.each do |result| %>
-          <li class="searchResultListItem">
-            <div class="searchResponseInfoContainer">
-              <strong><%= result["title"] %></strong>
+          <div class="searchResponseIconsContainer">
+            <div class="searchResponseIconsDiv">
+              <%= link_to course_detail_path(title: result["title"]), class: 'searchResponseIconsLink' do %>
+                <%= image_tag 'detail.png', class: "btn-img" %>
+              <% end %>
             </div>
 
-            <div class="searchResponseIconsContainer">
-              <div class="searchResponseIconsDiv">
-                <%= link_to course_detail_path(extract_parameters(result["detail_url"])), class: 'searchResponseIconsLink' do %>
-                  <%= image_tag 'detail.png', class: "btn-img" %>
-                <% end %>
-              </div>
-
-              <div class="searchResponseIconsDiv">
-                <%= link_to course_favorite_path(extract_parameters(result["detail_url"])), class: 'searchResponseIconsLink' do %>
+            <div class="searchResponseIconsDiv">
+              <%= form_with url: course_favorite_path, method: :post, local: true do |form| %>
+                <%= form.hidden_field :type, value: 'Course' %>
+                <%= form.hidden_field :title, value: result["title"] %>
+                <%= form.hidden_field :short, value: result["short"] %>
+                <%= form.hidden_field :detail_url, value: result["detail_url"] %>
+                <%= form.submit do %>
                   <%= image_tag 'favorite.png', class: "btn-img" %>
                 <% end %>
-              </div>
-
+              <% end %>
             </div>
-          </li>
-
-        <% end %>
+          </div>
+        </li>
       <% end %>
     </ul>
   </div>
+<% else %>
+  <p>No results found.</p>
 <% end %>

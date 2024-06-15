@@ -1,0 +1,16 @@
+<h1>Favorites</h1>
+
+<div class="favorites-container">
+  <% @favorites.each do |favorite| %>
+    <div class="favorite-card">
+      <h2><%= link_to favoritable_display_name(favorite.favoritable), favoritable_path(favorite.favoritable) %></h2>
+      <p><%= favorite.created_at %></p>
+
+      <%= form_with url: favorite_path(favorite), method: :delete, local: true do %>
+        <%= submit_tag 'Remove', class: 'btn btn-danger' %>
+      <% end %>
+
+      <%= link_to 'Edit', edit_favorite_path(favorite), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

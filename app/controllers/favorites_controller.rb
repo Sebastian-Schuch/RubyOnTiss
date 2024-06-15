@@ -41,7 +41,8 @@ class FavoritesController < ApplicationController
   private
 
   def set_user
-    @user = User.first # Use the sample user for now
+    authenticate_user
+    @user = current_user
   end
 
   def favorite_params(type)

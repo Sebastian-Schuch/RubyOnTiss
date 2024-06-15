@@ -1,42 +1,48 @@
 <h1><%= @site_name %></h1>
 
-<%= form_tag('/projects', method: 'get', class: 'searchForm')  do %>
-  <%= text_field_tag :search, params[:search], class:'searchInput'%>
+<%= form_tag('/projects', method: 'get', class: 'searchForm') do %>
+  <%= text_field_tag :search, params[:search], class: 'searchInput' %>
   <%= submit_tag 'Suchen', class: 'searchSubmitButton' %>
 <% end %>
 
 <% if @search_data_response.present? && @search_data_response["results"].present? %>
-
   <div id="searchResults">
-
-    <ul class="searchTesponseListUl">
-      <% if responseData =  @search_data_response["results"] %>
+    <ul class="searchResponseListUl">
+      <% if responseData = @search_data_response["results"] %>
         <% responseData.each do |result| %>
-          <li class="searchResultListItem">
-            <div class="searchResponseInfoContainer">
-              <strong><% if result["title"] %>
-                  <%= result["title"] %><br>
-                <%end %></strong>
-            </div>
-
-            <div class="searchResponseIconsContainer">
-              <div class="searchResponseIconsDiv">
-                <%= link_to projects_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
-                  <%= image_tag 'detail.png', class: "btn-img" %>
-                <% end %>
+          <% if result["id"].present? %>
+            <li class="searchResultListItem">
+              <div class="searchResponseInfoContainer">
+                <strong><%= result["title"] %></strong>
+                <p><%= result["short"] %></p>
               </div>
 
-              <div class="searchResponseIconsDiv">
-                <%= link_to projects_favorite_path(result["id"]), class: 'searchResponseIconsLink' do %>
-                  <%= image_tag 'favorite.png', class: "btn-img" %>
-                <% end %>
-              </div>
-            </div>
-          </li>
+              <div class="searchResponseIconsContainer">
+                <div class="searchResponseIconsDiv">
+                  <%= link_to projects_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
+                    <%= image_tag 'detail.png', class: "btn-img" %>
+                  <% end %>
+                </div>
 
+                <div class="searchResponseIconsDiv">
+                  <%= form_with url: projects_favorite_path(result["id"]), class: 'searchResponseIconsLink', method: :post, local: true do |form| %>
+                    <%= form.hidden_field :type, value: 'Project' %>
+                    <%= form.hidden_field :title, value: result["title"] %>
+                    <%= form.hidden_field :short, value: result["short"] %>
+                    <%= form.hidden_field :detail_url, value: result["detail_url"] %>
+                    <%= form.hidden_field :detail_url_rest, value: result["detail_url_rest"] %>
+                    <%= form.submit do %>
+                      <%= image_tag 'favorite.png', class: "btn-img" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
-
   </div>
+<% else %>
+  <p>No results found.</p>
 <% end %>

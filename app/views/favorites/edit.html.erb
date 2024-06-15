@@ -1,0 +1,15 @@
+<h1>Edit Favorite</h1>
+
+<%= form_with model: @favorite, local: true do |form| %>
+  <div>
+    <%= form.label :keywords %>
+    <%= form.text_area :keywords %>
+  </div>
+  <div>
+    <%= form.label :personal_notes %>
+    <%= form.text_area :personal_notes %>
+  </div>
+  <div>
+    <%= form.submit 'Save' %>
+  </div>
+<% end %>

@@ -1,25 +1,35 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-  #
   root 'mother_class#index', as: 'root'
+
+  # Person routes
   get "/person", to: "person#search"
   get '/person/:id/detail', to: 'person#get_details', as: 'person_detail'
-  get '/person/:id/favorite', to: 'person#add_favorite', as: 'person_favorite'
+  post '/person/:id/favorite', to: 'favorites#create', as: 'person_favorite'
+
+  # Courses routes
   get "/courses", to: "courses#index"
-  get "/courses/:id/detail", to: "courses#get_details", as: "course_detail"
-  get "/courses/:id/favorite", to: "courses#get_favorite", as: "course_favorite"
+  get "/courses/:title/detail", to: "courses#get_details", as: "course_detail"
+  post '/courses/favorite', to: 'favorites#create', as: 'course_favorite'
+
+  # Projects routes
   get "/projects", to: "projects#index"
   get '/projects/:id/detail', to: 'projects#get_details', as: 'projects_detail'
-  get '/projects/:id/favorite', to: 'projects#add_favorite', as: 'projects_favorite'
+  post '/projects/:id/favorite', to: 'favorites#create', as: 'projects_favorite'
+
+  # Theses routes
   get "/theses", to: "theses#index"
   get '/theses/:id/detail', to: 'theses#get_details', as: 'theses_detail'
-  get '/theses/:id/favorite', to: 'theses#add_favorite', as: 'theses_favorite'
+  post '/theses/favorite', to: 'favorites#create', as: 'theses_favorite'
+
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create', as: 'login_create'
   get '/register', to: 'users#new', as: 'register'
   post '/register', to: 'users#create', as: 'register_create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
+
+  # Favorites routes
+  resources :favorites, only: [:index, :create, :destroy, :edit, :update]
+
+  # Person Reports routes
+  resources :person_reports, only: [:show]
 end

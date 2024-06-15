@@ -352,6 +352,345 @@ li a:hover:not(.active) {
     cursor: pointer;
 }
 
+/* ******* for reports etc ******** */
+searchForm {
+    margin-bottom: 20px;
+}
+
+.searchInput {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.searchSubmitButton {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
+
+.searchResponseListUl {
+    list-style-type: none;
+    padding: 0;
+}
+
+.searchResultListItem {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.searchResponseInfoContainer {
+    margin-bottom: 10px;
+}
+
+.searchResponseIconsContainer {
+    display: flex;
+}
+
+.searchResponseIconsDiv {
+    margin-right: 10px;
+}
+
+.btn-img {
+    width: 20px;
+    height: 20px;
+}
+
+.favorite-button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    background-color: #ff9900;
+}
+
+.report-section {
+    margin-top: 20px;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+/********* Fovorites page ********* */
+.favorites-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.favorite-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.favorite-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+/* ******* for reports etc ******** */
+searchForm {
+    margin-bottom: 20px;
+}
+
+.searchInput {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.searchSubmitButton {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
+
+.searchResponseListUl {
+    list-style-type: none;
+    padding: 0;
+}
+
+.searchResultListItem {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.searchResponseInfoContainer {
+    margin-bottom: 10px;
+}
+
+.searchResponseIconsContainer {
+    display: flex;
+}
+
+.searchResponseIconsDiv {
+    margin-right: 10px;
+}
+
+.btn-img {
+    width: 20px;
+    height: 20px;
+}
+
+.favorite-button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    background-color: #ff9900;
+}
+
+.report-section {
+    margin-top: 20px;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+/********* Fovorites page ********* */
+.favorites-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.favorite-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.favorite-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+/* ******* for reports etc ******** */
+searchForm {
+    margin-bottom: 20px;
+}
+
+.searchInput {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.searchSubmitButton {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
+
+.searchResponseListUl {
+    list-style-type: none;
+    padding: 0;
+}
+
+.searchResultListItem {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.searchResponseInfoContainer {
+    margin-bottom: 10px;
+}
+
+.searchResponseIconsContainer {
+    display: flex;
+}
+
+.searchResponseIconsDiv {
+    margin-right: 10px;
+}
+
+.btn-img {
+    width: 20px;
+    height: 20px;
+}
+
+.favorite-button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    background-color: #ff9900;
+}
+
+.report-section {
+    margin-top: 20px;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+/********* Fovorites page ********* */
+.favorites-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.favorite-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.favorite-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
 
 form {
     width: 90%;
