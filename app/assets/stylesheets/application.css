@@ -31,17 +31,18 @@ body{
     flex-wrap: wrap
 }
 
-ul {
+.ul-nav-elements{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    #border: 1px solid #e7e7e7;
-    #background-color: #f3f3f3;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
 }
 
 li {
     float: left;
+    color: #2E2F30;
 }
 
 li a {
@@ -255,6 +256,7 @@ li a:hover:not(.active) {
         visibility: hidden;
         transition: all 0.3s ease;
         overflow: hidden;
+        z-index: 99;
 
     }
 
@@ -267,7 +269,7 @@ li a:hover:not(.active) {
     }
 
     .topnav a {
-        color: white;
+        #color: white;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
