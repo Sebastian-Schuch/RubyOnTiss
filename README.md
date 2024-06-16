@@ -28,7 +28,7 @@ By clicking on the name of the item the user can see the detail view of the item
 it is also possible to sort the favorites by clicking on the sort button and selecting the desired sorting method or 
 filtering the favorites by clicking on the filter button and selecting the type.
 
-By clicking on "Reports" in the navabar the user can see a report of the favorite as a "print-view" for each types ether with or
+By clicking on "Reports" in the navbar the user can see a report of the favorite as a "print-view" for each types ether with or
 without the notes and keywords.
 
 When selecting the detail view of a Person the user can generate a report for all courses, projects and theses of the person.
