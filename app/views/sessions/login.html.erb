@@ -1,17 +1,17 @@
-<h1>Login</h1>
+<h1 class="login-title">Login</h1>
 
-<%= form_with url: login_create_path, local: true do |f| %>
-  <div>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<%= form_with url: login_create_path, local: true, class: 'login-form' do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: 'form-label' %><br>
+    <%= f.text_field :name, class: 'form-input' %>
   </div>
-  <div>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+  <div class="form-group">
+    <%= f.label :password, class: 'form-label' %><br>
+    <%= f.password_field :password, class: 'form-input' %>
   </div>
-  <div>
-    <%= f.submit "Login" %>
+  <div class="form-group">
+    <%= f.submit "Login", class: 'submit-button' %>
   </div>
 <% end %>
-<span>No Account yet?</span>
-<button class="userButton"><%= link_to 'Go to Sign Up', register_path, class:"textDecorationNone" %></button>
+<span class="register-prompt">No Account yet?</span>
+<button class="register-button"><%= link_to 'Go to Sign Up', register_path, class:"register-link" %></button>

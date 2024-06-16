@@ -8,7 +8,8 @@ Versions:
 - Ruby: 3.1.2
 - Rails: 7.0.1
 
-Launch server with: rails server
+Before starting the application, make sure to run "rails db:migrate" to create the database.
+Launch server with: "rails server"
 
 Proxy of the Tiss page.
 

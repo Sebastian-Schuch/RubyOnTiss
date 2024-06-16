@@ -1,16 +1,16 @@
-<h1>Sign Up</h1>
+<h1 class="login-title">Sign Up</h1>
 
-<%= form_for @user, url: register_create_path do |f| %>
-  <div>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<%= form_for @user, url: register_create_path, class: 'login-form' do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: 'form-label' %><br>
+    <%= f.text_field :name, class: 'form-input' %>
   </div>
-  <div>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+  <div class="form-group">
+    <%= f.label :password, class: 'form-label' %><br>
+    <%= f.password_field :password, class: 'form-input' %>
   </div>
-  <div>
-    <%= f.submit "Sign Up" %>
+  <div class="form-group">
+    <%= f.submit "Sign Up", class: 'submit-button' %>
   </div>
 <% end %>
-<button class="userButton"><%= link_to 'Go to Login', login_path, class:"textDecorationNone" %></button>
+<button class="register-button"><%= link_to 'Go to Login', login_path, class:"register-link" %></button>
