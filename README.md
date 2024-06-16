@@ -54,6 +54,7 @@ Time tracking:
 | 12222156 | Sebastian Schuch | Added a full report for a specific person which is searchable with Regex expressions, also each categorie is also viewable for a specifc person | 5:00h | 16.06.2024 13:00 | 16.06.2024 18:00 |
 | 12225164  | Jonathan Schort  | generate Reports for Projects, Courses, Person and Theses with keywords or without                                                              | 1:00h | 16.06.2024 16:00 | 15.06.2024 17:00 |
 | 12225164  | Jonathan Schort  | design changes for buttons, cards, etc.                                                                                                         | 1:00h | 16.06.2024 17:00 | 15.06.2024 18:00 |
+
 Sebastian Schuch: 18h
 
 Jonathan Schort: 15h
