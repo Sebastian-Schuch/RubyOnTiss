@@ -51,5 +51,11 @@ Time tracking:
 | 12222156  | Sebastian Schuch | Implemented a Login System and User setup with Authguards for the Search Features                                                               | 3:00h | 15.06.2024 12:00 | 15.06.2024 15:00 |
 | 12225164  | Jonathan Schort  | Added functionality to add favorites + favorites-page + models for entities in database                                                         | 3:00h | 15.06.2024 12:00 | 15.06.2024 15:00 |
 | 12225164  | Jonathan Schort  | added functionality to add keywords and personal notes to favorites + fixed detail view from favorites + filter and sort favorites              | 3:00h | 15.06.2024 20:00 | 15.06.2024 23:00 |
+| 12222156 | Sebastian Schuch | Added a full report for a specific person which is searchable with Regex expressions, also each categorie is also viewable for a specifc person | 5:00h | 16.06.2024 13:00 | 16.06.2024 18:00 |
 | 12225164  | Jonathan Schort  | generate Reports for Projects, Courses, Person and Theses with keywords or without                                                              | 1:00h | 16.06.2024 16:00 | 15.06.2024 17:00 |
 | 12225164  | Jonathan Schort  | design changes for buttons, cards, etc.                                                                                                         | 1:00h | 16.06.2024 17:00 | 15.06.2024 18:00 |
+Sebastian Schuch: 18h
+
+Jonathan Schort: 15h
+
+Total hours: 33h
