@@ -1,0 +1,80 @@
+<%= form_tag(full_report_path, method: :get) do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q, params[:q]) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<h2>Person Overview</h2>
+
+<div class="card">
+  <div class="card-image">
+    <% if @picture.present? %>
+      <%= image_tag @picture, class: 'card-img', alt: "Picture of #{@firstname} #{@lastname}" %>
+    <% else %>
+      <%= image_tag("person.png", class: 'card-img', alt: "Picture of #{@firstname} #{@lastname}") %>
+    <% end %>
+  </div>
+  <div class="card-content">
+    <p class="card-subtitle"><%= "#{@pre_title}" %></p>
+    <h2 class="card-title"><%= "#{@gender} #{@firstname} #{@lastname}" %></h2>
+  </div>
+</div>
+
+<h2>All Courses</h2>
+<% if @courses["results"].empty? %>
+  <p>No Courses found</p>
+<% else %>
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>Courses</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @courses["results"].each do |result| %>
+      <tr>
+        <td><%= highlight_text(result["title"], @regex).html_safe %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<h2>All Projects</h2>
+<% if @projects["results"].empty? %>
+  <p>No Projects found</p>
+<% else %>
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>Projects</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @projects["results"].each do |result| %>
+      <tr>
+        <td><%= highlight_text(result["title"], @regex).html_safe %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h2>All Theses</h2>
+
+<% if @theses["results"].empty? %>
+  <p>No Theses found</p>
+<% else %>
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>Theses</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @theses["results"].each do |result| %>
+      <tr>
+        <td><%= highlight_text(result["title"], @regex).html_safe %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

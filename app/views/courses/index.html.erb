@@ -1,6 +1,6 @@
 <h1><%= @site_name %></h1>
 
-<%= form_tag('/courses', method: 'get', class: 'searchForm') do %>
+<%= form_tag('/courses.html.erb', method: 'get', class: 'searchForm') do %>
   <%= text_field_tag :search, params[:search], class: 'searchInput' %>
   <%= submit_tag 'Suchen', class: 'searchSubmitButton' %>
 <% end %>

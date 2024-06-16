@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2024_06_15_124850) do
 
-  create_table "courses", force: :cascade do |t|
+  create_table "courses.html.erb", force: :cascade do |t|
     t.string "title"
     t.text "short"
     t.string "detail_url"

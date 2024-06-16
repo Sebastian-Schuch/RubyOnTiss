@@ -20,6 +20,22 @@ class PersonController < MotherClassController
     end
   end
 
+  def full_report
+    tiss_http_fetcher = TissHttpFetcher.new
+    @detail = tiss_http_fetcher.get_person(params[:id])
+    parse_xml(@detail)
+    @regex = params[:q] || ""
+    @projects = tiss_http_fetcher.search_project(@firstname+"+"+@lastname)
+    @courses = tiss_http_fetcher.search_course(@firstname+"+"+@lastname)
+    @theses = tiss_http_fetcher.search_thesis(@firstname+"+"+@lastname)
+    render :report
+  end
+
+  def highlight_search_term(content, term)
+    regex = Regexp.new("(#{Regexp.escape(term)})", Regexp::IGNORECASE)
+    content.gsub(regex, '<strong>\1</strong>')
+  end
+
   def addFavorite(id)
     @id = id
     @time = Time.now
