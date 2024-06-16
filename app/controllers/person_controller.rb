@@ -31,6 +31,30 @@ class PersonController < MotherClassController
     render :report
   end
 
+  def courses
+    tiss_http_fetcher = TissHttpFetcher.new
+    @detail = tiss_http_fetcher.get_person(params[:id])
+    parse_xml(@detail)
+    @courses = tiss_http_fetcher.search_course(@firstname+"+"+@lastname)
+    render :courses
+  end
+
+  def theses
+    tiss_http_fetcher = TissHttpFetcher.new
+    @detail = tiss_http_fetcher.get_person(params[:id])
+    parse_xml(@detail)
+    @theses = tiss_http_fetcher.search_thesis(@firstname+"+"+@lastname)
+    render :theses
+  end
+
+  def projects
+    tiss_http_fetcher = TissHttpFetcher.new
+    @detail = tiss_http_fetcher.get_person(params[:id])
+    parse_xml(@detail)
+    @projects = tiss_http_fetcher.search_project(@firstname+"+"+@lastname)
+    render :projects
+  end
+
   def highlight_search_term(content, term)
     regex = Regexp.new("(#{Regexp.escape(term)})", Regexp::IGNORECASE)
     content.gsub(regex, '<strong>\1</strong>')

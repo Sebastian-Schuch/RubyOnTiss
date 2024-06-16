@@ -10,6 +10,10 @@
     <p class="card-subtitle"><%= "#{@pre_title}" %></p>
     <h2 class="card-title"><%= "#{@gender} #{@firstname} #{@lastname}" %></h2>
   </div>
+  <%= link_to 'Full Report', full_report_path(@id), class: 'personSelectButton' %>
+  <%= link_to 'Courses', person_courses_path(@id), class: 'personSelectButton' %>
+  <%= link_to 'Theses', person_theses_path(@id), class: 'personSelectButton' %>
+  <%= link_to 'Projects', person_projects_path(@id), class: 'personSelectButton' %>
 </div>
 
 <%= link_to 'Go Back', :back, class: 'back-button' %>

@@ -1,0 +1,25 @@
+<h2>All Theses of <%= @firstname+" "+@lastname %></h2>
+<% if @theses["results"].empty? %>
+  <p>No Theses found</p>
+<% else %>
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>Theses</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @theses["results"].each do |result| %>
+      <tr>
+        <td><%= result["title"].html_safe %></td>
+        <td>
+          <%= link_to theses_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
+            <%= image_tag 'detail.png', class: "btn-img" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

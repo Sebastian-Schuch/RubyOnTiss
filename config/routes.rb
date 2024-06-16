@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/person/:id/detail', to: 'person#get_details', as: 'person_detail'
   post '/person/:id/favorite', to: 'favorites#create', as: 'person_favorite'
   get '/person/:id/report', to: 'person#full_report', as: 'full_report'
+  get '/person/:id/courses', to: 'person#courses', as: 'person_courses'
+  get '/person/:id/theses', to: 'person#theses', as: 'person_theses'
+  get '/person/:id/projects', to: 'person#projects', as: 'person_projects'
 
   # Courses routes
   get "/courses", to: "courses#index"

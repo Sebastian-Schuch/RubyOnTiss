@@ -12,6 +12,7 @@ class MotherClassController < ApplicationController
     perform_search(tiss_http_fetcher) if params[:search].present?
     Rails.logger.debug { "search_#{controller_name.singularize}" }
     fetch_details(tiss_http_fetcher) if params[:id].present?
+    @id = params[:id] if params[:id].present?
   end
 
   def perform_search(tiss_http_fetcher)

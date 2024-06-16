@@ -1,0 +1,25 @@
+<h2>All Courses that <%= @firstname+" "+@lastname %> holds</h2>
+<% if @courses["results"].empty? %>
+  <p>No Courses found</p>
+<% else %>
+  <table class="styled-table">
+    <thead>
+    <tr>
+      <th>Courses</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @courses["results"].each do |result| %>
+      <tr>
+        <td><%= result["title"].html_safe %></td>
+        <td>
+          <%= link_to course_detail_path(extract_parameters(result["detail_url"])), class: 'searchResponseIconsLink' do %>
+            <%= image_tag 'detail.png', class: "btn-img" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
