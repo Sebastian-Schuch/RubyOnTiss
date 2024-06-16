@@ -1,0 +1,12 @@
+<h1>Reports</h1>
+<div class="report-links">
+  <% @types.each do |type| %>
+    <div class="report-link">
+      <h2><%= type %></h2>
+      <div class="report-card">
+        <%= link_to "View with Annotations", report_show_path(type: type, with_annotations: true), class: 'btn btn-report btn-primary report-button' %>
+        <%= link_to "View without Annotations", report_show_path(type: type, with_annotations: false), class: 'btn btn-report btn-secondary report-button' %>
+      </div>
+    </div>
+  <% end %>
+</div>

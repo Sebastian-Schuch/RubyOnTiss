@@ -1,0 +1,17 @@
+<h1><%= @type %> Report</h1>
+<p>
+  <%= link_to "Back to Reports", report_index_path, class: 'btn btn-secondary report-button' %>
+</p>
+<div class="favorites-report">
+  <% @favorites.each do |favorite| %>
+    <div class="favorite-item">
+      <h2><%= favoritable_display_name(favorite.favoritable) %></h2>
+      <p><strong>Added on:</strong> <%= favorite.created_at.strftime('%B %d, %Y') %></p>
+      <% if @with_annotations %>
+        <p><strong>Keywords:</strong> <%= favorite.keywords %></p>
+        <p><strong>Personal Notes:</strong> <%= favorite.personal_notes %></p>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+</div>

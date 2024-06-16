@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   post '/register', to: 'users#create', as: 'register_create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
+  get '/report', to: 'reports#index', as: 'report_index'
+  get '/report/:type', to: 'reports#show', as: 'report_show'
+
   # Favorites routes
   resources :favorites, only: [:index, :create, :destroy, :edit, :update]
 
