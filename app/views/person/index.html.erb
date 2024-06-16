@@ -13,20 +13,21 @@
           <li class="searchResultListItem">
             <div class="searchResponseInfoContainer">
               <% if result["prefixTitle"] %>
-                <%= result["prefixTitle"] %><br>
+                <%= result["prefixTitle"].html_safe %><br>
               <% end %>
-              <strong><%= result["firstname"] %> <%= result["lastname"] %></strong>
+              <strong><%= result["firstname"].html_safe %> <%= result["lastname"].html_safe %></strong>
             </div>
 
             <div class="searchResponseIconsContainer">
               <div class="searchResponseIconsDiv">
-                <%= link_to person_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
+                <%= link_to person_detail_path(result["id"]), class: 'searchResponseIconsLink detail-button' do %>
                   <%= image_tag 'detail.png', class: "btn-img" %>
+                  Details
                 <% end %>
               </div>
 
               <div class="searchResponseIconsDiv">
-                <%= form_with url: person_favorite_path(result["id"]), method: :post, local: true do |form| %>
+                <%= form_with url: person_favorite_path(result["id"]), method: :post, local: true,  class: 'searchResponseIconsLink favorite-button' do |form| %>
                   <%= form.hidden_field :type, value: 'Person' %>
                   <%= form.hidden_field :firstname, value: result["firstname"] %>
                   <%= form.hidden_field :lastname, value: result["lastname"] %>
@@ -35,8 +36,9 @@
                   <%= form.hidden_field :postfix_title, value: result["postfixTitle"] %>
                   <%= form.hidden_field :adressbuch_benutzerbild, value: result["adressbuch_benutzerbild"] %>
                   <%= form.hidden_field :adressbuch_visitenkarte, value: result["adressbuch_visitenkarte"] %>
-                  <%= form.submit do %>
+                  <%= button_tag type: 'submit', class: 'favorite-button' do %>
                     <%= image_tag 'favorite.png', class: "btn-img" %>
+                    Add to Favorites
                   <% end %>
                 <% end %>
               </div>
@@ -46,6 +48,4 @@
       <% end %>
     </ul>
   </div>
-<% else %>
-  <p>No results found.</p>
 <% end %>

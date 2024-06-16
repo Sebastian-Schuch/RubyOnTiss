@@ -13,26 +13,28 @@
           <% if result["id"].present? %>
             <li class="searchResultListItem">
               <div class="searchResponseInfoContainer">
-                <strong><%= result["title"] %></strong>
-                <p><%= result["short"] %></p>
+                <strong><%= result["title"].html_safe %></strong>
+                <p><%= result["short"].html_safe %></p>
               </div>
 
               <div class="searchResponseIconsContainer">
                 <div class="searchResponseIconsDiv">
-                  <%= link_to projects_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
+                  <%= link_to projects_detail_path(result["id"]), class: 'searchResponseIconsLink detail-button' do %>
                     <%= image_tag 'detail.png', class: "btn-img" %>
+                    Details
                   <% end %>
                 </div>
 
                 <div class="searchResponseIconsDiv">
-                  <%= form_with url: projects_favorite_path(result["id"]), class: 'searchResponseIconsLink', method: :post, local: true do |form| %>
+                  <%= form_with url: projects_favorite_path(result["id"]), class: 'searchResponseIconsLink', method: :post, local: true, class: 'searchResponseIconsLink favorite-button' do |form| %>
                     <%= form.hidden_field :type, value: 'Project' %>
                     <%= form.hidden_field :title, value: result["title"] %>
                     <%= form.hidden_field :short, value: result["short"] %>
                     <%= form.hidden_field :detail_url, value: result["detail_url"] %>
                     <%= form.hidden_field :detail_url_rest, value: result["detail_url_rest"] %>
-                    <%= form.submit do %>
+                    <%= button_tag type: 'submit', class: 'favorite-button' do %>
                       <%= image_tag 'favorite.png', class: "btn-img" %>
+                      Add to Favorites
                     <% end %>
                   <% end %>
                 </div>
@@ -43,6 +45,4 @@
       <% end %>
     </ul>
   </div>
-<% else %>
-  <p>No results found.</p>
 <% end %>

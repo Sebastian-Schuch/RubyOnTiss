@@ -15,13 +15,13 @@
  */
 
 
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: Poppins, Helvetica, sans-serif;
 }
 
-#main{
+#main {
     display: flex;
     flex-direction: column;
     margin: 30px;
@@ -31,7 +31,7 @@ body{
     flex-wrap: wrap
 }
 
-.ul-nav-elements{
+.ul-nav-elements {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -62,17 +62,17 @@ li a:hover:not(.active) {
     background-color: #cc0000;
 }
 
-.nav-img-logo{
+.nav-img-logo {
     width: auto;
     height: 40px;
     margin: 0 20px 0 20px;
 }
 
-#logo-mobile{
+#logo-mobile {
     display: none;
 }
 
-#mobile-menu-icon{
+#mobile-menu-icon {
     display: none;
 }
 
@@ -80,80 +80,79 @@ li a:hover:not(.active) {
     display: block;
 }
 
-#searchResults{
+#searchResults {
     max-width: 500px;
     position: relative;
     display: flex;
+    flex-direction: column;
     margin: 20px;
 }
 
-.searchTesponseListUl{
-
+.searchTesponseListUl {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    //overflow: visible;
     border: none;
     background-color: transparent;
 }
 
-.searchResultListItem{
+.searchResultListItem {
     margin-bottom: 20px;
     width: 98%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    //padding: 10px;
     border-radius: 10px;
-    border: 1px solid #e7e7e7 ;
+    border: 1px solid #e7e7e7;
     overflow: hidden;
 }
 
-.searchResponseInfoContainer{
+.searchResponseInfoContainer {
     padding: 10px;
     margin-left: 10px;
-    width: 60%;
     display: block;
 }
 
-.searchResponseIconsContainer{
+.searchResponseIconsContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-.searchResponseIconsDiv{
-   // background-color: #666666;
-    height: 100%;
+    gap: 10px;
+    width: 100%;
 }
 
-.btn-img {
-    width: auto;
-    height: 28px;
-}
-
-.searchResponseIconsLink{
+.searchResponseIconsLink {
     display: flex;
-    padding: 22px;
-    align-content: center;
-    justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    text-decoration: none;
+    color: #000;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-right: 5px;
+    max-height: 50px;
 }
 
-.searchForm{
+.searchResponseIconsLink:last-child {
+    margin-right: 0;
+}
+
+.searchResponseIconsLink .btn-img {
+    margin-right: 5px;
+}
+
+.searchForm {
     max-width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
     flex-wrap: wrap;
-    flex-direction: row;
     width: 100%;
 }
 
-.searchInput{
+.searchInput {
     width: 70%;
     padding: 12px 20px;
     display: inline-block;
@@ -161,8 +160,7 @@ li a:hover:not(.active) {
     box-sizing: border-box;
 }
 
-
-.searchSubmitButton{
+.searchSubmitButton {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -173,24 +171,20 @@ li a:hover:not(.active) {
     cursor: pointer;
 }
 
-
-
-
 /* ******************* Detail Page ******************* */
 
-.personDetailContainer{
+.personDetailContainer {
     max-width: 600px;
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
     flex-wrap: wrap;
     flex-direction: row;
     margin: 20px;
 }
 
-.personDetailImage{
+.personDetailImage {
     width: 100%;
 }
 
@@ -229,12 +223,11 @@ li a:hover:not(.active) {
 }
 
 @media screen and (max-width: 600px) {
-
-    #mobile-menu-icon{
+    #mobile-menu-icon {
         display: block;
     }
 
-    #logo-desktop{
+    #logo-desktop {
         display: none;
     }
 
@@ -243,13 +236,13 @@ li a:hover:not(.active) {
         width: 100%;
     }
 
-    #logo-mobile{
+    #logo-mobile {
         display: block;
     }
 
     .topnav #myLinks {
         transform: scaleY(0);
-        width:100%;
+        width: 100%;
         transform-origin: top;
         position: absolute;
         opacity: 0;
@@ -257,19 +250,15 @@ li a:hover:not(.active) {
         transition: all 0.3s ease;
         overflow: hidden;
         z-index: 99;
-
     }
 
     .topnav #myLinks.expanded {
         transform: scaleY(1);
         opacity: 1;
-
         visibility: visible;
-
     }
 
     .topnav a {
-        #color: white;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
@@ -277,14 +266,12 @@ li a:hover:not(.active) {
     }
 
     .topnav a.icon {
-        #background: black;
         color: black;
         display: block;
         position: absolute;
         right: 0;
         top: 0;
         z-index: 99;
-
     }
 
     li:hover {
@@ -306,15 +293,13 @@ li a:hover:not(.active) {
     padding: 5px;
 }
 
-
-
 .card-image {
     width: 100%;
     height: auto;
     overflow: hidden;
     display: flex;
-    justify-content: center; /* align horizontally */
-    align-items: flex-end; /* align vertically */
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .card-img {
@@ -359,7 +344,6 @@ li a:hover:not(.active) {
 }
 
 .report-link {
-    #flex: 1 1 200px;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
@@ -376,12 +360,11 @@ li a:hover:not(.active) {
     margin-top: 20px;
 }
 
-.btn-report{
+.btn-report {
     display: flex;
 }
 
 @media (max-width: 768px) {
-
     .report-link h2 {
         font-size: 1.2em;
     }
@@ -392,10 +375,6 @@ li a:hover:not(.active) {
 }
 
 /* ******* for reports etc ******** */
-searchForm {
-    margin-bottom: 20px;
-}
-
 .searchInput {
     padding: 10px;
     font-size: 16px;
@@ -407,10 +386,17 @@ searchForm {
 }
 
 #searchResults {
-    margin-top: 20px;
+    width: 95%;
+    max-width: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .searchResponseListUl {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     list-style-type: none;
     padding: 0;
 }
@@ -430,18 +416,36 @@ searchForm {
 }
 
 .searchResponseIconsDiv {
-    margin-right: 10px;
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-img {
-    width: 20px;
+    width: auto;
     height: 20px;
+    margin-right: 8px;
+}
+
+
+.searchResponseIconsLink,
+.favorite-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 .favorite-button {
     background-color: #ffcc00;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
     cursor: pointer;
 }
 
@@ -449,12 +453,16 @@ searchForm {
     background-color: #ff9900;
 }
 
-.report-section {
-    margin-top: 20px;
+.favorite-button:hover {
+    background-color: #ff9900;
 }
 
-.highlight {
-    background-color: yellow;
+.detail-button {
+    background-color: #f0f0f0;
+}
+
+.report-section {
+    margin-top: 20px;
 }
 
 /********* Fovorites page ********* */
@@ -535,7 +543,7 @@ searchForm {
     gap: 10px;
 }
 
-.remove-button-form{
+.remove-button-form {
     display: flex;
     flex: 1;
 }
@@ -579,9 +587,32 @@ searchForm {
     .favorite-card {
         width: 100%;
     }
+
+    .searchResponseIconsLink {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .searchResponseIconsLink:last-child {
+        margin-bottom: 0;
+    }
+
+    .btn-report {
+        flex-direction: column;
+    }
+
+    .btn-report .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn-report .btn:last-child {
+        margin-bottom: 0;
+    }
 }
+
 /* ****** Favorite edit page ****** */
-.edit-favorite-form{
+.edit-favorite-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -589,6 +620,7 @@ searchForm {
     width: 100%;
     max-width: 500px;
 }
+
 .edit-favorite-form .form-group {
     display: flex;
     flex-direction: column;
@@ -604,7 +636,6 @@ searchForm {
 
 .edit-favorite-form input,
 .edit-favorite-form textarea {
-    #width: 100%;
     max-width: 500px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -622,7 +653,6 @@ searchForm {
     width: 45%;
     text-align: center;
 }
-
 .title{
     color: #1e7038;
 }

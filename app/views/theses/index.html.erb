@@ -11,25 +11,28 @@
       <% @search_data_response["results"].each do |result| %>
         <li class="searchResultListItem">
           <div class="searchResponseInfoContainer">
-            <strong><%= result["title"] %></strong>
-            <p><%= result["short"] %></p>
+            <strong><%= result["title"].html_safe %></strong>
+            <p><%= result["short"].html_safe %></p>
           </div>
 
           <div class="searchResponseIconsContainer">
             <div class="searchResponseIconsDiv">
-              <%= link_to theses_detail_path(result["id"]), class: 'searchResponseIconsLink' do %>
+              <%= link_to theses_detail_path(result["id"]), class: 'searchResponseIconsLink detail-button' do %>
                 <%= image_tag 'detail.png', class: "btn-img" %>
+                Details
               <% end %>
             </div>
 
             <div class="searchResponseIconsDiv">
-              <%= form_with url: theses_favorite_path, method: :post, local: true do |form| %>
+              <%= form_with url: theses_favorite_path(result["id"]), method: :post, local: true, class: 'searchResponseIconsLink favorite-button' do |form| %>
                 <%= form.hidden_field :type, value: 'Thesis' %>
+                <%= form.hidden_field :id, value: result["id"] %>
                 <%= form.hidden_field :title, value: result["title"] %>
                 <%= form.hidden_field :short, value: result["short"] %>
                 <%= form.hidden_field :detail_url, value: result["detail_url"] %>
-                <%= form.submit do %>
+                <%= button_tag type: 'submit', class: 'favorite-button' do %>
                   <%= image_tag 'favorite.png', class: "btn-img" %>
+                  Add to Favorites
                 <% end %>
               <% end %>
             </div>
@@ -38,6 +41,4 @@
       <% end %>
     </ul>
   </div>
-<% else %>
-  <p>No results found.</p>
 <% end %>
