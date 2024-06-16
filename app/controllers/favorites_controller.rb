@@ -24,7 +24,6 @@ class FavoritesController < ApplicationController
     if favorite.save
       redirect_back fallback_location: root_path, notice: 'Added to favorites'
     else
-      Rails.logger.debug { "Favorite save failed: #{favorite.errors.full_messages.join(', ')}" }
       redirect_back fallback_location: root_path, alert: 'Unable to add to favorites'
     end
   end
@@ -42,8 +41,7 @@ class FavoritesController < ApplicationController
   def update
     @favorite = @user.favorites.find(params[:id])
     type = @favorite.favoritable_type
-    params[:favorite].delete(:type) # Remove the type parameter
-    Rails.logger.debug { "Update Params: #{update_favorite_params(type)}" }
+    params[:favorite].delete(:type)
     if @favorite.update(update_favorite_params(type))
       redirect_to favorites_path(type: params[:type], sort: params[:sort]), notice: 'Updated favorite'
     else
@@ -67,7 +65,6 @@ class FavoritesController < ApplicationController
     when 'Thesis'
       params.permit(:type, :id, :title, :short, :detail_url)
     else
-      Rails.logger.debug { "Unknown favoritable type: #{type}" }
       raise "Unknown favoritable type"
     end
   end

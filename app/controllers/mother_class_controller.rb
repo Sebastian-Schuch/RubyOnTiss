@@ -10,15 +10,13 @@ class MotherClassController < ApplicationController
     @search_data_response = []
     @detail = nil
     perform_search(tiss_http_fetcher) if params[:search].present?
-    Rails.logger.debug { "search_#{controller_name.singularize}" }
     fetch_details(tiss_http_fetcher) if params[:id].present?
     @id = params[:id] if params[:id].present?
   end
 
   def perform_search(tiss_http_fetcher)
-    Rails.logger.debug { "search_#{controller_name.singularize}" }
-    search_request = SearchRequest.new(query: params[:search])
-    if search_request.valid?
+    @search_request = SearchRequest.new(search: params[:search])
+    if @search_request.valid? && !params[:search].strip.empty? && !params[:search].blank?
       search_method = "search_#{controller_name.singularize}"
       if tiss_http_fetcher.respond_to?(search_method)
         @search_data_response = tiss_http_fetcher.send(search_method, params[:search])

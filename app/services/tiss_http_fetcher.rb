@@ -56,12 +56,10 @@ class TissHttpFetcher
     case response.content_type
     when 'application/json'
       json_response = JSON.parse(response.body)
-      Rails.logger.debug { "JSON Response: #{json_response}" }
       json_response
     when 'text/html', 'application/xml'
       doc = Nokogiri::XML(response.body)
       doc.remove_namespaces!
-      Rails.logger.debug { "XML Response: #{doc}" }
       doc
     else
       raise "Unsupported content type #{response.content_type}"
