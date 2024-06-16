@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get '/person/:id/report', to: 'person#full_report', as: 'full_report'
 
   # Courses routes
-  get "/courses.html.erb", to: "courses#index"
-  get "/courses.html.erb/:id/detail", to: "courses#get_details", as: "course_detail"
-  post '/courses.html.erb/:id/favorite', to: 'favorites#create', as: 'course_favorite'
+  get "/courses", to: "courses#index"
+  get "/courses/:id/detail", to: "courses#get_details", as: "course_detail"
+  post '/courses/:id/favorite', to: 'favorites#create', as: 'course_favorite'
 
   # Projects routes
   get "/projects", to: "projects#index"
@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new', as: 'register'
   post '/register', to: 'users#create', as: 'register_create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
+
+  get '/report', to: 'reports#index', as: 'report_index'
+  get '/report/:type', to: 'reports#show', as: 'report_show'
 
 
   # Favorites routes

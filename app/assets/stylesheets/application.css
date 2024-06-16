@@ -31,17 +31,18 @@ body{
     flex-wrap: wrap
 }
 
-ul {
+.ul-nav-elements{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    #border: 1px solid #e7e7e7;
-    #background-color: #f3f3f3;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
 }
 
 li {
     float: left;
+    color: #2E2F30;
 }
 
 li a {
@@ -255,6 +256,7 @@ li a:hover:not(.active) {
         visibility: hidden;
         transition: all 0.3s ease;
         overflow: hidden;
+        z-index: 99;
 
     }
 
@@ -267,7 +269,7 @@ li a:hover:not(.active) {
     }
 
     .topnav a {
-        color: white;
+        #color: white;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
@@ -349,69 +351,44 @@ li a:hover:not(.active) {
 }
 
 /* ******* for reports etc ******** */
-searchForm {
-    margin-bottom: 20px;
+.report-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-.searchInput {
-    padding: 10px;
-    font-size: 16px;
+.report-link {
+    #flex: 1 1 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
 }
 
-.searchSubmitButton {
-    padding: 10px 20px;
-    font-size: 16px;
+.report-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-#searchResults {
+.favorites-report {
     margin-top: 20px;
 }
 
-.searchResponseListUl {
-    list-style-type: none;
-    padding: 0;
-}
-
-.searchResultListItem {
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-}
-
-.searchResponseInfoContainer {
-    margin-bottom: 10px;
-}
-
-.searchResponseIconsContainer {
+.btn-report{
     display: flex;
 }
 
-.searchResponseIconsDiv {
-    margin-right: 10px;
-}
+@media (max-width: 768px) {
 
-.btn-img {
-    width: 20px;
-    height: 20px;
-}
+    .report-link h2 {
+        font-size: 1.2em;
+    }
 
-.favorite-button {
-    background-color: #ffcc00;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.favorite-button:hover {
-    background-color: #ff9900;
-}
-
-.report-section {
-    margin-top: 20px;
-}
-
-.highlight {
-    background-color: yellow;
+    .favorite-item hr {
+        margin: 10px 0;
+    }
 }
 
 /* ******* for reports etc ******** */
