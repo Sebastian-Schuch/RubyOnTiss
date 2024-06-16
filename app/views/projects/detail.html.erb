@@ -1,17 +1,17 @@
 <div class="card">
 
     <div class="card-content">
-      <h2><%= @title_en %></h2>
-      <h2><%= @title_de %></h2>
-      <p><strong>Short Description:</strong> <%= @short_description %></p>
-      <p><strong>Contract Begin:</strong> <%= @contract_begin %></p>
-      <p><strong>Contract End:</strong> <%= @contract_end %></p>
-      <p><strong>Project Begin:</strong> <%= @project_begin %></p>
-      <p><strong>Project End:</strong> <%= @project_end %></p>
-      <p><strong>Project Form:</strong> <%= @project_form %></p>
-      <p><strong>Project Type:</strong> <%= @project_type %></p>
-      <p><strong>Abstract (DE):</strong> <%= @abstract_de %></p>
-      <p><strong>Abstract (EN):</strong> <%= @abstract_en %></p>
+      <h2><%= @title_en.html_safe %></h2>
+      <h2><%= @title_de.html_safe %></h2>
+      <p><strong>Short Description:</strong> <%= @short_description.html_safe %></p>
+      <p><strong>Contract Begin:</strong> <%= @contract_begin.html_safe %></p>
+      <p><strong>Contract End:</strong> <%= @contract_end.html_safe %></p>
+      <p><strong>Project Begin:</strong> <%= @project_begin.html_safe %></p>
+      <p><strong>Project End:</strong> <%= @project_end.html_safe %></p>
+      <p><strong>Project Form:</strong> <%= @project_form.html_safe %></p>
+      <p><strong>Project Type:</strong> <%= @project_type.html_safe %></p>
+      <p><strong>Abstract (DE):</strong> <%= @abstract_de.html_safe %></p>
+      <p><strong>Abstract (EN):</strong> <%= @abstract_en.html_safe %></p>
 
       <h3>Institutes</h3>
       <% @institutes.each do |institute| %>

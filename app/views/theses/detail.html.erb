@@ -2,14 +2,14 @@
 
   <div class="card-image">
   <div class="card-content">
-    <h2 class="card-title"><%= "#{@title}" %></h2>
+    <h2 class="card-title"><%= "#{@title}".html_safe %></h2>
     <br>
     <p class="card-subtitle">Institute Name:</p>
-    <p class="card-content"><%= "#{@instituteName}" %></p>
+    <p class="card-content"><%= "#{@instituteName}".html_safe %></p>
     <p class="card-subtitle">Faculty Name:</p>
-    <p class="card-content"><%= "#{@facultyName}" %></p>
+    <p class="card-content"><%= "#{@facultyName}".html_safe %></p>
     <p class="card-subtitle">Keywords:</p>
-    <p class="card-content"><%= "#{@keywords}" %></p>
+    <p class="card-content"><%= "#{@keywords}".html_safe %></p>
     <p class="card-subtitle">Abstract:</p>
     <p class="card-content">
       <a href="<%= @url %>">More Info</a>
